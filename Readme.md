@@ -1,176 +1,74 @@
-# Quiz Application API
+# 🎯 Quiz Application API
 
-A FastAPI-based quiz application with user authentication, wallet system, and comprehensive quiz management features.
+> A modern FastAPI-based quiz application with user authentication, wallet rewards system, and comprehensive quiz management.
 
-# Table of Contents
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue.svg)](https://www.postgresql.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Features
-Tech Stack
-Prerequisites
-Installation
-Configuration
-Database Setup
-Running the Application
-API Documentation
-Testing
-Project Structure
-API Endpoints
-Contributing
-License
+---
 
-# Features
+## 📋 Table of Contents
 
-User Management
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Configuration](#configuration)
+- [API Endpoints](#api-endpoints)
+- [Testing](#testing)
+- [Troubleshooting](#troubleshooting)
 
-User registration with email validation
-Secure password hashing
-JWT-based authentication
-User profile management
-Soft delete functionality
+---
 
+## ✨ Features
 
-Quiz System
+### 👤 User Management
+- ✅ User registration with email validation
+- ✅ Secure password hashing (Werkzeug)
+- ✅ JWT-based authentication (30-min expiry)
+- ✅ Profile management & soft delete
 
-Multiple choice questions with JSON-based options
-Category-based question organization
-Random question selection
-Duplicate attempt prevention
-Question statistics tracking (views, correct/wrong counts)
+### 📝 Quiz System
+- ✅ Multiple choice questions (JSON-based options)
+- ✅ Category organization
+- ✅ Random question selection
+- ✅ Duplicate attempt prevention
+- ✅ Real-time statistics tracking
 
+### 💰 Wallet & Rewards
+- ✅ Earn 100 points per correct answer
+- ✅ Transaction history
+- ✅ Balance tracking
 
-Wallet System
+### 📊 Analytics
+- ✅ Personal quiz statistics
+- ✅ Accuracy percentage
+- ✅ Total earnings dashboard
 
-Reward points for correct answers
-Transaction history tracking
-User balance management
+---
 
+## 🛠 Tech Stack
 
-Analytics
+| Category | Technology |
+|----------|-----------|
+| **Framework** | FastAPI |
+| **Language** | Python 3.8+ |
+| **Database** | PostgreSQL |
+| **ORM** | SQLAlchemy |
+| **Auth** | JWT (PyJWT) |
+| **Testing** | pytest, httpx |
 
-User quiz statistics
-Accuracy percentage calculation
-Total earnings tracking
+---
 
-# Tech Stack
+## 🚀 Quick Start
 
-Backend Framework: Python (FastAPI)
-Database: PostgreSQL
-ORM: SQLAlchemy
-Authentication: JWT (PyJWT)
-Password Hashing: Werkzeug
-Environment Management: python-dotenv
-CORS: FastAPI CORS Middleware
-Testing: pytest, httpx
+### Prerequisites
 
-# Prerequisites
+Before you begin, ensure you have:
+- ✅ Python 3.8 or higher
+- ✅ PostgreSQL 12 or higher
+- ✅ pip package manager
 
-Python 3.8+
-PostgreSQL 12+
-pip (Python package manager)
-
-# Installation
-
-1.Clone the repository
-
-$ git clone https://github.com/yourusername/quiz-application.git
-$ cd quiz-application
-
-2.Create virtual environment
-
-$ python -m venv venv
-   
-# On Windows
-$ venv\Scripts\activate
-
-# On macOS/Linux
-$ source venv/bin/activate
-
-Install dependencies
-
-$ pip install -r requirements.txt
-
-# Configuration
-
-# Create .env file in the root directory:
-  
->> Database Configuration
-
-USER_NAME=your_db_username
-PASSWORD=your_db_password
-HOST=localhost
-PORT=5432
-DATABASE=quiz_app_db
-   
-# Security
-SECRET_KEY=your_super_secret_key_here_min_32_characters
-
-# Generate SECRET_KEY (Python):
-
-import secrets
-print(secrets.token_urlsafe(32))
-
-# Database Setup
-
-Create PostgreSQL database
-
-$ CREATE DATABASE quiz_app_db;
-
-Tables are created automatically when you run the application for the first time through SQLAlchemy's create_all() method.
-
-# Database Schema
-Users Table
-
-- id (Primary Key)
-- name
-- email (Unique)
-- password (Hashed)
-- user_role (default: "user")
-- total_amount (default: 0.00)
-- status (default: "active")
-- created_at
-- updated_at
-
-QuizData Table
-
-- id (Primary Key)
-- category
-- question (Unique)
-- options (JSON)
-- answer
-- views
-- correct_guess_count
-- wrong_guess_count
-- created_at
-- updated_at
-
-UserWallet Table
-
-- id (Primary Key)
-- user_id (Foreign Key -> Users)
-- amount
-- timestamp
-
-UserQuizes Table
-
-- id (Primary Key)
-- user_id (Foreign Key -> Users)
-- quiz_id (Foreign Key -> QuizData)
-- status (1: correct, 0: wrong)
-- timestamp
-
-Running the Application
-
-Development mode
-
-bash   uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-Production mode
-
-bash   uvicorn main:app --host 0.0.0.0 --port 8000
-
-Access the application
-
-API: http://localhost:8000
-Interactive API docs: http://localhost:8000/docs
-Alternative API docs: http://localhost:8000/redoc
-
+### 1️⃣ Clone & Setup
+```bash
