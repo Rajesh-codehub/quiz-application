@@ -210,10 +210,4 @@ Contributions are welcome! Please feel free to fork the repository and submit pu
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
 ⭐️ If this project helped, please give it a star!
