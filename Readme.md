@@ -208,11 +208,6 @@ text
 
 Contributions are welcome! Please feel free to fork the repository and submit pull requests.
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
